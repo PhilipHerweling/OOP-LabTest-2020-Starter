@@ -96,6 +96,31 @@ public class Gantt extends PApplet
             fill(200);
             textAlign(LEFT, CENTER);
             text(ta.getTask(), left + 10, y + (h / 2));
+		}
+
+		//Initialising gap to be = to 1 tenth of width
+		float gap = width * 0.1f;
+		//Initialising halfGap to be = to 2 tenths of gap
+		float halfGap = gap / 2.0f;
+
+		//setting the colour of the lines
+		//and alligning text to be at the centre of the line
+		stroke(200);
+		textAlign(CENTER, CENTER);
+
+		//This for goes around 30 thimes
+		//drwaing 30 lines which are evenly spaced 
+		//and prints out the text over the lines
+		for(int i = 1 ; i <=30 ; i ++)
+		{
+			float x = map(i, -2, 28, gap, width -gap);				
+			line(x, gap, x, height - gap);
+			fill(200);
+			text(i, x, halfGap);
+			
         }
+		
+
+
 	}
 }
