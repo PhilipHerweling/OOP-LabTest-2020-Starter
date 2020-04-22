@@ -10,6 +10,13 @@ public class Gantt extends PApplet
 {	
 	//Task ArrayList 
 	ArrayList<Task> tasks = new ArrayList<Task>();
+
+	//Setting up variables
+	float border;
+    float left;
+
+    float w;
+    float h;
 	
 	public void settings()
 	{
@@ -60,5 +67,35 @@ public class Gantt extends PApplet
 	public void draw()
 	{			
 		background(0);
+
+		//Initialising variables 
+		//which were setup at the start
+		border = width * 0.1f;
+        left = width * 0.05f;
+
+        w = width * 0.3f;
+		h = height * 0.1f;
+
+		//calling display method
+		display();
+	}
+
+	//Setting up display method
+	public void display()
+	{
+		//for loop goes through the tasks array and
+		//gets all of the tasks
+		for(int i = 0 ; i < tasks.size() ; i ++)
+        {
+            Task ta = tasks.get(i);
+
+			//intialising y using the map function
+            float y = map(i, 0, tasks.size(), border, height - border);
+
+			//Displays the tasks on the screen
+            fill(200);
+            textAlign(LEFT, CENTER);
+            text(ta.getTask(), left + 10, y + (h / 2));
+        }
 	}
 }
