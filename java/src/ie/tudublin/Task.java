@@ -1,13 +1,17 @@
 package ie.tudublin;
 
 import processing.data.Table;
+import processing.data.TableRow;
 
 
 public class Task {
 
+    //Setting up initial variables
     private String task;
     private int start, end;
 
+    //Getter and setter methods for all
+    //three variables
     public String getTask() {
         return task;
     }
@@ -32,19 +36,23 @@ public class Task {
         this.end = end;
     }
 
+    //To String method
     @Override
     public String toString() {
-        return "Task [end=" + end + ", start=" + start + ", task=" + task + "]";
+        return task + ", " + start + ", " 
+        + end; 
     }
 
+    //Constructor with 3 parameters
     public Task(String task, int start, int end) {
         this.task = task;
         this.start = start;
         this.end = end;
     }
 
-    public Task(Table tr){
-        
-    }
+    //Constructor with tr parameter
+	public Task(TableRow tr) {
+        this(tr.getString("Task"), tr.getInt("Start"), tr.getInt("End"));
+	}
 
 }
