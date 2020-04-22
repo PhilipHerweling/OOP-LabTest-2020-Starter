@@ -108,18 +108,49 @@ public class Gantt extends PApplet
 		stroke(200);
 		textAlign(CENTER, CENTER);
 
-		//This for goes around 30 thimes
+		//This for goes around 30 times
 		//drwaing 30 lines which are evenly spaced 
 		//and prints out the text over the lines
 		for(int i = 1 ; i <=30 ; i ++)
 		{
+			
 			float x = map(i, -2, 28, gap, width -gap);				
 			line(x, gap, x, height - gap);
 			fill(200);
 			text(i, x, halfGap);
 			
-        }
-		
+		}
+
+
+		int col = 0;
+
+		for(int i = 0 ; i < tasks.size() ; i ++)
+        {
+			Task ta = tasks.get(i);
+
+			//calculating the width of the rectangles
+			float ww = (ta.getEnd() - ta.getStart()) * 21;
+
+			//calculating the y axis ie this is used to
+			// allign the rectangles with the writing 
+			float y = map(i, 0, tasks.size(), border, height - border);
+
+			//calculating the x axis e.g start point
+			float x = map(ta.getStart(), -2, 28, gap, width -gap);
+
+			//setting the colour mode to hsb
+			//and colouring the rectangles
+			colorMode(HSB);
+			noStroke();
+			fill((col), 300, 300);
+
+			//using variables that i made up top to create the rectangles
+			rect(x, y + (h / 2), ww ,h/3); // tlx, tly, w, h
+
+			//adding 30 onto col variable so every rectangle is a differnt colour
+			col = col +30;
+			
+		}
 
 
 	}
